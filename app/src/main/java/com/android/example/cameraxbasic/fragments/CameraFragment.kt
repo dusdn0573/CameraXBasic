@@ -377,7 +377,7 @@ class CameraFragment : Fragment() {
                         // We log image analysis results here - you should do something useful
                         // 이미지 분석 결과를 여기에 기록합니다. 유용한 작업을 수행해야 합니다.
                         // instead!
-                        Log.d(TAG, "Average luminosity: $luma")
+//                        Log.d(TAG, "Average luminosity: $luma")
                     })
                 }
 
@@ -776,10 +776,11 @@ class CameraFragment : Fragment() {
         val requestBody: RequestBody = FormBody.Builder()
             .add("file", imageString)
             .build()
-        Log.d("보내는 거 : ", imageString)
+//        Log.d("보내는 거 : ", imageString)
         val request = okhttp3.Request.Builder()
             .url(myUrl)
-            .post(requestBody)
+//          .post(requestBody)
+            .get()
             .build()
         val client = OkHttpClient()
 //        val responses = client.newCall(request).execute()
@@ -788,10 +789,15 @@ class CameraFragment : Fragment() {
 //            val jsonObject = JSONObject(message)
 //            val title = jsonObject.getString("category")
 
-            override fun onResponse(call: Call, response: okhttp3.Response) {
+            override fun onResponse(call: Call, response: Response) {
+                var message: String = response.body().toString()
                 Log.d("요청","요청 완료")
-                Log.d(TAG,"요청(response!!!): $request")
+                Log.d(TAG, "message : $message")
+                Log.d(TAG,"response: ${requestBody.toString()}")
+                Log.d(TAG,"onResponse: ${response.body().toString()}")
+                Log.d(TAG,"call: $client")
 
+                Log.d(TAG,"요청(response!!!): ${response.toString()}")
             }
 
             override fun onFailure(call: Call, e: IOException) {
