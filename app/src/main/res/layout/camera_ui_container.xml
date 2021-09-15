@@ -31,6 +31,11 @@
         android:layout_marginTop="50dp"
         android:gravity="center|top">
         <Button
+            android:id="@+id/btn_category"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="인식" />
+        <Button
             android:id="@+id/btn_p1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

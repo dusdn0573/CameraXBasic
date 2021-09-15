@@ -37,6 +37,7 @@ import android.view.ViewGroup
 import android.webkit.MimeTypeMap
 import android.widget.Button
 import android.widget.ImageButton
+import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.camera.core.*
 import androidx.camera.core.AspectRatio.RATIO_4_3
@@ -66,7 +67,6 @@ import kotlinx.android.synthetic.main.fragment_camera.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import okhttp3.*
-import org.json.JSONObject
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.IOException
@@ -119,8 +119,9 @@ class CameraFragment : Fragment() {
     var requestQueue: RequestOptions? = null
     var myUrl = "http://15.165.119.213:5000/formdata"
     var responsePhotoURI:String? = null
+    var resultBody:String?=null
 
-
+    lateinit var tv : Button
 
 
     /** Blocking camera operations are performed using this executor
@@ -446,6 +447,22 @@ class CameraFragment : Fragment() {
                 setGalleryThumbnail(Uri.fromFile(it))
             }
         }
+        //카테고리
+        controls.findViewById<Button>(R.id.btn_category).setOnClickListener{
+            if(btn_category.getText().toString().equals("beach")){
+                Log.d(TAG,"이것은 beach")
+            }
+            else if(btn_category.getText().toString().equals("building")){
+                Log.d(TAG,"이것은 building")
+            }
+
+//            gudo_h.visibility=if (gudo_h.visibility==View.INVISIBLE){
+//                View.VISIBLE
+//            }else{
+//                View.INVISIBLE
+//            }
+
+        }
         //수평구도
         controls.findViewById<Button>(R.id.btn_h).setOnClickListener{
             gudo_h.visibility=if (gudo_h.visibility==View.INVISIBLE){
@@ -517,6 +534,7 @@ class CameraFragment : Fragment() {
                 val imageBytes = baos.toByteArray()
                 val imageString = Base64.encodeToString(imageBytes, Base64.DEFAULT)
                 send(imageString)
+//                Log.d(TAG, "send() succeeded: $resultBody")
                 // Display flash animation to indicate that photo was captured
                 //사진이 캡처되었음을 나타내는 플래시 애니메이션 표시
                 container.postDelayed({
@@ -775,11 +793,13 @@ class CameraFragment : Fragment() {
         client.newCall(request).enqueue(object : Callback {
 
             override fun onResponse(call: Call, response: Response) {
-                Log.d(ContentValues.TAG, "body()?.string() : ${response.body()?.string()}")
+//                Log.d(ContentValues.TAG, "body()?.string() : ${response.body()?.string()}")
 
+                tv = container.findViewById<Button>(R.id.btn_category)
+                tv.setText(response.body()?.string())
 
-
-
+//                af1 = controls.findViewById(R.id.texViewA)
+//                af1.setText(response.body().toString())
             }
 
             override fun onFailure(call: Call, e: IOException) {
@@ -787,55 +807,8 @@ class CameraFragment : Fragment() {
                 Log.e("Failure", Log.getStackTraceString(e))
             }
 
+
         })
-//        val jsonInput = JSONObject()
-//        val requestBody: RequestBody = RequestBody.create(
-//            MediaType.parse("application/json; charset=utf-8"),
-//            jsonInput.toString()
-//            )
-//        val requestBody: RequestBody = FormBody.Builder()
-//            .add("file", imageString)
-//            .build()
-////        Log.d("보내는 거 : ", imageString)
-//        val request = okhttp3.Request.Builder()
-//            .url(myUrl)
-////          .post(requestBody)
-//            .get()
-//            .build()
-//        val client = OkHttpClient()
-////        val responses = client.newCall(request).execute()
-//        client.newCall(request).enqueue(object : Callback{
-////            var message: String = responses.body().toString()
-////            val jsonObject = JSONObject(message)
-////            val title = jsonObject.getString("category")
-//
-//            override fun onResponse(call: Call, response: Response) {
-//                var message: String = response.body().toString()
-//                Log.d("요청","요청 완료")
-//                Log.d(TAG, "message : $message")
-//                Log.d(TAG,"response: ${requestBody.toString()}")
-//                Log.d(TAG,"onResponse: ${response.body().toString()}")
-//                Log.d(TAG,"call: $client")
-//
-//                Log.d(TAG,"요청(response!!!): ${response.toString()}")
-//            }
-//
-//            override fun onFailure(call: Call, e: IOException) {
-//                Log.d("요청","요청 실패")
-//                Log.e("Failure",Log.getStackTraceString(e))
-//            }
-//
-//        })
-//        OkHttpClient.Builder().build().newCall(request).enqueue(object : Callback {
-//            override fun onFailure(call: Call, e: IOException) {
-//                Log.e("Failure",Log.getStackTraceString(e))
-//            }
-//
-//            override fun onResponse(call: Call, response: okhttp3.Response) {
-//                Log.e("response","response !!!!!!")
-//            }
-//
-//        })
     }
 
 //    private fun sendGet(){
