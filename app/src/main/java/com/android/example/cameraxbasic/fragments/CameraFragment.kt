@@ -187,9 +187,9 @@ class CameraFragment : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?,
+            inflater: LayoutInflater,
+            container: ViewGroup?,
+            savedInstanceState: Bundle?,
     ): View? =
             inflater.inflate(R.layout.fragment_camera, container, false)
 
@@ -522,14 +522,13 @@ class CameraFragment : Fragment() {
                 container.postDelayed({
                     container.foreground = ColorDrawable(Color.WHITE)
                     container.postDelayed(
-                        { container.foreground = null }, ANIMATION_FAST_MILLIS)
+                            { container.foreground = null }, ANIMATION_FAST_MILLIS)
                 }, ANIMATION_SLOW_MILLIS)
-
             }
-            
+
 
         }
-        
+
         // Listener for button used to capture photo
         // 사진 캡처에 사용되는 버튼의 수신기
         controls.findViewById<ImageButton>(R.id.camera_capture_button).setOnClickListener {
@@ -552,40 +551,40 @@ class CameraFragment : Fragment() {
                 // Create output options object which contains file + metadata
                 // 파일 + 메타데이터를 포함하는 출력 옵션 개체 생성
                 val outputOptions = ImageCapture.OutputFileOptions.Builder(photoFile)
-                    .setMetadata(metadata)
-                    .build()
+                        .setMetadata(metadata)
+                        .build()
 
                 // Setup image capture listener which is triggered after photo has been taken
                 // 사진을 찍은 후 트리거되는 이미지 캡처 수신기 설정
                 imageCapture.takePicture(
-                    outputOptions, cameraExecutor, object : ImageCapture.OnImageSavedCallback {
-                        override fun onError(exc: ImageCaptureException) {
-                            Log.e(TAG, "Photo capture failed: ${exc.message}", exc)
-                        }
+                        outputOptions, cameraExecutor, object : ImageCapture.OnImageSavedCallback {
+                    override fun onError(exc: ImageCaptureException) {
+                        Log.e(TAG, "Photo capture failed: ${exc.message}", exc)
+                    }
 
-                        // 사진을 찍고 어떻게 저장할 지에 대한 구현부
-                        override fun onImageSaved(output: ImageCapture.OutputFileResults) {
-                            savedUri = output.savedUri ?: Uri.fromFile(photoFile)
-                            Log.d(TAG, "Photo capture succeeded: $savedUri")
+                    // 사진을 찍고 어떻게 저장할 지에 대한 구현부
+                    override fun onImageSaved(output: ImageCapture.OutputFileResults) {
+                        savedUri = output.savedUri ?: Uri.fromFile(photoFile)
+                        Log.d(TAG, "Photo capture succeeded: $savedUri")
 
-                            selected_bitmap = MediaStore.Images.Media.getBitmap(
+                        selected_bitmap = MediaStore.Images.Media.getBitmap(
                                 context?.contentResolver,
                                 savedUri
-                            )
+                        )
 //                        fun onImageSaved(bitmap: Bitmap, photoFile: File) {
 //                            val photoFile = createFile(outputDirectory, FILENAME, PHOTO_EXTENSION)
 //                            val OutputStream = FileOutputStream(photoFile)
 //                            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, OutputStream)
 //                            Log.d(TAG, "Photo capture succeeded: $savedUri")
 
-                            selected_bitmap = MediaStore.Images.Media.getBitmap(
+                        selected_bitmap = MediaStore.Images.Media.getBitmap(
                                 context?.contentResolver,
                                 savedUri
-                            )
+                        )
 
 
-                            val imageString = bitmapToString(selected_bitmap)
-                            Log.d("IMAGE TO STRING!!", "$imageString")
+                        val imageString = bitmapToString(selected_bitmap)
+                        Log.d("IMAGE TO STRING!!", "$imageString")
 //                            HttpCheck(myUrl, imageString)
 //                            Log.d("run http check!!", myUrl)
 //                        val request: StringRequest = object : StringRequest(Request.Method.POST, myUrl, Response.Listener { s ->
@@ -626,31 +625,31 @@ class CameraFragment : Fragment() {
 //                            val rQueue = Volley.newRequestQueue(context)
 //                            rQueue.add(request)
 
-                            // Implicit broadcasts will be ignored for devices running API level >= 24
-                            // API 수준 >= 24를 실행하는 장치에 대해서는 암시적 브로드캐스트가 무시됩니다.
-                            // so if you only target API level 24+ you can remove this statement
-                            //따라서 만약 당신이 24+ API 레벨만을 대상으로 한다면 당신은 이 문을 제거할 수 있다.
-                            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
-                                requireActivity().sendBroadcast(
+                        // Implicit broadcasts will be ignored for devices running API level >= 24
+                        // API 수준 >= 24를 실행하는 장치에 대해서는 암시적 브로드캐스트가 무시됩니다.
+                        // so if you only target API level 24+ you can remove this statement
+                        //따라서 만약 당신이 24+ API 레벨만을 대상으로 한다면 당신은 이 문을 제거할 수 있다.
+                        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
+                            requireActivity().sendBroadcast(
                                     Intent(android.hardware.Camera.ACTION_NEW_PICTURE, savedUri)
-                                )
-                            }
-                            // If the folder selected is an external media directory, this is
-                            // unnecessary but otherwise other apps will not be able to access our
-                            // images unless we scan them using [MediaScannerConnection]
-                            //선택한 폴더가 외부 미디어 디렉토리인 경우 불필요하지만 그렇지 않으면 [MediaScannerConnection]을 사용하여
-                            // 이미지를 스캔하지 않으면 다른 앱에서 해당 이미지에 액세스할 수 없습니다.
-                            val mimeType = MimeTypeMap.getSingleton()
+                            )
+                        }
+                        // If the folder selected is an external media directory, this is
+                        // unnecessary but otherwise other apps will not be able to access our
+                        // images unless we scan them using [MediaScannerConnection]
+                        //선택한 폴더가 외부 미디어 디렉토리인 경우 불필요하지만 그렇지 않으면 [MediaScannerConnection]을 사용하여
+                        // 이미지를 스캔하지 않으면 다른 앱에서 해당 이미지에 액세스할 수 없습니다.
+                        val mimeType = MimeTypeMap.getSingleton()
                                 .getMimeTypeFromExtension(savedUri.toFile().extension)
-                            MediaScannerConnection.scanFile(
+                        MediaScannerConnection.scanFile(
                                 context,
                                 arrayOf(savedUri.toFile().absolutePath),
                                 arrayOf(mimeType)
-                            ) { _, uri ->
-                                Log.d(TAG, "Image capture scanned into media store: $uri")
-                            }
-
+                        ) { _, uri ->
+                            Log.d(TAG, "Image capture scanned into media store: $uri")
                         }
+
+                    }
 
 //                        //서버로 이미지 보내기
 //                        private fun HttpCheck(myUrl: String, imageString: String) {
@@ -677,7 +676,7 @@ class CameraFragment : Fragment() {
 //                                .readTimeout(100, TimeUnit.MINUTES) //read timeout
 //                                .build()
 //                            Log.d("전송 주소 ", myUrl)
-                            // 요청 전송
+                    // 요청 전송
 //                            client.newCall(request).enqueue(object : Callback {
 //                                override fun onResponse(call: Call, response: okhttp3.Response) {
 //                                    val jsonObject = response.body().toString()
@@ -699,19 +698,19 @@ class CameraFragment : Fragment() {
 
 //                        }
 
-                        //비트맵을 스트링으로 변환
-                        private fun bitmapToString(bitmap: Bitmap): String {
+                    //비트맵을 스트링으로 변환
+                    private fun bitmapToString(bitmap: Bitmap): String {
 
-                            val byteArrayOutputStream = ByteArrayOutputStream()
+                        val byteArrayOutputStream = ByteArrayOutputStream()
 
-                            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream)
+                        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream)
 
-                            val byteArray = byteArrayOutputStream.toByteArray()
+                        val byteArray = byteArrayOutputStream.toByteArray()
 
-                            return Base64.encodeToString(byteArray, Base64.DEFAULT)
-                        }
+                        return Base64.encodeToString(byteArray, Base64.DEFAULT)
+                    }
 
-                    })
+                })
 
 
                 // We can only change the foreground Drawable using API level 23+ API
@@ -723,7 +722,7 @@ class CameraFragment : Fragment() {
                     container.postDelayed({
                         container.foreground = ColorDrawable(Color.WHITE)
                         container.postDelayed(
-                            { container.foreground = null }, ANIMATION_FAST_MILLIS)
+                                { container.foreground = null }, ANIMATION_FAST_MILLIS)
                     }, ANIMATION_SLOW_MILLIS)
                 }
 
@@ -768,44 +767,65 @@ class CameraFragment : Fragment() {
 
     //서버로 이미지전송
     private fun send(imageString: String) {
+        val request = okhttp3.Request
+                .Builder()
+                .url(myUrl)
+                .build()
+        val client = OkHttpClient()
+        client.newCall(request).enqueue(object : Callback {
+
+            override fun onResponse(call: Call, response: Response) {
+                Log.d(ContentValues.TAG, "body()?.string() : ${response.body()?.string()}")
+
+
+
+
+            }
+
+            override fun onFailure(call: Call, e: IOException) {
+                Log.d("요청","요청 실패")
+                Log.e("Failure", Log.getStackTraceString(e))
+            }
+
+        })
 //        val jsonInput = JSONObject()
 //        val requestBody: RequestBody = RequestBody.create(
 //            MediaType.parse("application/json; charset=utf-8"),
 //            jsonInput.toString()
 //            )
-        val requestBody: RequestBody = FormBody.Builder()
-            .add("file", imageString)
-            .build()
-//        Log.d("보내는 거 : ", imageString)
-        val request = okhttp3.Request.Builder()
-            .url(myUrl)
-//          .post(requestBody)
-            .get()
-            .build()
-        val client = OkHttpClient()
-//        val responses = client.newCall(request).execute()
-        client.newCall(request).enqueue(object : Callback{
-//            var message: String = responses.body().toString()
-//            val jsonObject = JSONObject(message)
-//            val title = jsonObject.getString("category")
-
-            override fun onResponse(call: Call, response: Response) {
-                var message: String = response.body().toString()
-                Log.d("요청","요청 완료")
-                Log.d(TAG, "message : $message")
-                Log.d(TAG,"response: ${requestBody.toString()}")
-                Log.d(TAG,"onResponse: ${response.body().toString()}")
-                Log.d(TAG,"call: $client")
-
-                Log.d(TAG,"요청(response!!!): ${response.toString()}")
-            }
-
-            override fun onFailure(call: Call, e: IOException) {
-                Log.d("요청","요청 실패")
-                Log.e("Failure",Log.getStackTraceString(e))
-            }
-
-        })
+//        val requestBody: RequestBody = FormBody.Builder()
+//            .add("file", imageString)
+//            .build()
+////        Log.d("보내는 거 : ", imageString)
+//        val request = okhttp3.Request.Builder()
+//            .url(myUrl)
+////          .post(requestBody)
+//            .get()
+//            .build()
+//        val client = OkHttpClient()
+////        val responses = client.newCall(request).execute()
+//        client.newCall(request).enqueue(object : Callback{
+////            var message: String = responses.body().toString()
+////            val jsonObject = JSONObject(message)
+////            val title = jsonObject.getString("category")
+//
+//            override fun onResponse(call: Call, response: Response) {
+//                var message: String = response.body().toString()
+//                Log.d("요청","요청 완료")
+//                Log.d(TAG, "message : $message")
+//                Log.d(TAG,"response: ${requestBody.toString()}")
+//                Log.d(TAG,"onResponse: ${response.body().toString()}")
+//                Log.d(TAG,"call: $client")
+//
+//                Log.d(TAG,"요청(response!!!): ${response.toString()}")
+//            }
+//
+//            override fun onFailure(call: Call, e: IOException) {
+//                Log.d("요청","요청 실패")
+//                Log.e("Failure",Log.getStackTraceString(e))
+//            }
+//
+//        })
 //        OkHttpClient.Builder().build().newCall(request).enqueue(object : Callback {
 //            override fun onFailure(call: Call, e: IOException) {
 //                Log.e("Failure",Log.getStackTraceString(e))
