@@ -62,6 +62,7 @@ import com.android.example.cameraxbasic.utils.ANIMATION_SLOW_MILLIS
 import com.android.example.cameraxbasic.utils.simulateClick
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.google.android.material.internal.ViewOverlayImpl
 import kotlinx.android.synthetic.main.camera_ui_container.*
 import kotlinx.android.synthetic.main.fragment_camera.*
 import kotlinx.coroutines.Dispatchers
@@ -449,12 +450,46 @@ class CameraFragment : Fragment() {
         }
         //카테고리
         controls.findViewById<Button>(R.id.btn_category).setOnClickListener{
+            btn_t1.visibility=View.GONE
+            btn_t2.visibility=View.GONE
+            btn_h.visibility=View.GONE
+            btn_v1.visibility=View.GONE
+            btn_v2.visibility=View.GONE
+            btn_p1.visibility=View.GONE
+            btn_p2.visibility=View.GONE
+
+            gudo_h.visibility=View.INVISIBLE
+            gudo_v.visibility=View.INVISIBLE
+            gudo_v1.visibility=View.INVISIBLE
+            gudo_v2.visibility=View.INVISIBLE
+            gudo_p1.visibility=View.INVISIBLE
+            gudo_p2.visibility=View.INVISIBLE
+            gudo_t1.visibility=View.INVISIBLE
+            gudo_t2.visibility=View.INVISIBLE
+            gudo_t3.visibility=View.INVISIBLE
+            gudo_t4.visibility=View.INVISIBLE
+
             if(btn_category.getText().toString().equals("beach")){
                 Log.d(TAG,"이것은 beach")
+                btn_h.visibility=View.VISIBLE
             }
             else if(btn_category.getText().toString().equals("building")){
                 Log.d(TAG,"이것은 building")
+                btn_v1.visibility=View.VISIBLE
+                btn_v2.visibility=View.VISIBLE
+
             }
+            else if(btn_category.getText().toString().equals("person")){
+                Log.d(TAG,"이것은 person")
+                btn_p1.visibility=View.VISIBLE
+                btn_p2.visibility=View.VISIBLE
+            }
+            else if(btn_category.getText().toString().equals("road")){
+                Log.d(TAG,"이것은 road")
+                btn_t1.visibility=View.VISIBLE
+                btn_t2.visibility=View.VISIBLE
+            }
+
 
 //            gudo_h.visibility=if (gudo_h.visibility==View.INVISIBLE){
 //                View.VISIBLE
@@ -478,6 +513,9 @@ class CameraFragment : Fragment() {
             }else{
                 View.INVISIBLE
             }
+            gudo_v1.visibility=View.INVISIBLE
+            gudo_v2.visibility=View.INVISIBLE
+
         }
         //수직구도2
         controls.findViewById<Button>(R.id.btn_v2).setOnClickListener{
@@ -488,6 +526,7 @@ class CameraFragment : Fragment() {
                 gudo_v1.visibility=View.INVISIBLE
                 gudo_v2.visibility=View.INVISIBLE
             }
+            gudo_v.visibility=View.INVISIBLE
         }
         //삼각구도
         controls.findViewById<Button>(R.id.btn_t1).setOnClickListener{
@@ -498,6 +537,8 @@ class CameraFragment : Fragment() {
                 gudo_t1.visibility=View.INVISIBLE
                 gudo_t2.visibility=View.INVISIBLE
             }
+            gudo_t3.visibility=View.INVISIBLE
+            gudo_t4.visibility=View.INVISIBLE
         }
         //삼각구도
         controls.findViewById<Button>(R.id.btn_t2).setOnClickListener{
@@ -508,6 +549,8 @@ class CameraFragment : Fragment() {
                 gudo_t3.visibility=View.INVISIBLE
                 gudo_t4.visibility=View.INVISIBLE
             }
+            gudo_t1.visibility=View.INVISIBLE
+            gudo_t2.visibility=View.INVISIBLE
         }
 
         //사람구도
@@ -517,6 +560,7 @@ class CameraFragment : Fragment() {
             }else{
                 View.INVISIBLE
             }
+            gudo_p2.visibility=View.INVISIBLE
         }
         //사람구도
         controls.findViewById<Button>(R.id.btn_p2).setOnClickListener{
@@ -525,9 +569,31 @@ class CameraFragment : Fragment() {
             }else{
                 View.INVISIBLE
             }
+            gudo_p1.visibility=View.INVISIBLE
+
         }
         //촬영장소인식 버튼을 눌렀을 때
         controls.findViewById<Button>(R.id.btn_c).setOnClickListener {
+            btn_t1.visibility=View.GONE
+            btn_t2.visibility=View.GONE
+            btn_h.visibility=View.GONE
+            btn_v1.visibility=View.GONE
+            btn_v2.visibility=View.GONE
+            btn_p1.visibility=View.GONE
+            btn_p2.visibility=View.GONE
+
+
+            gudo_h.visibility=View.INVISIBLE
+            gudo_v.visibility=View.INVISIBLE
+            gudo_v1.visibility=View.INVISIBLE
+            gudo_v2.visibility=View.INVISIBLE
+            gudo_p1.visibility=View.INVISIBLE
+            gudo_p2.visibility=View.INVISIBLE
+            gudo_t1.visibility=View.INVISIBLE
+            gudo_t2.visibility=View.INVISIBLE
+            gudo_t3.visibility=View.INVISIBLE
+            gudo_t4.visibility=View.INVISIBLE
+
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 val baos = ByteArrayOutputStream()
                 selected_bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos)

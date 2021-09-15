@@ -35,16 +35,18 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:text="인식" />
-        <Button
-            android:id="@+id/btn_p1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="인물1" />
-        <Button
-            android:id="@+id/btn_p2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="인물2" />
+<!--        <Button-->
+<!--            android:id="@+id/btn_p1"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:visibility="gone"-->
+<!--            android:text="인물1" />-->
+<!--        <Button-->
+<!--            android:id="@+id/btn_p2"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:visibility="gone"-->
+<!--            android:text="인물2" />-->
 
 
     </LinearLayout>
@@ -71,33 +73,45 @@
             android:id="@+id/btn_h"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:visibility="gone"
             android:text="바다" />
+        <Button
+            android:id="@+id/btn_p1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:text="인물1" />
+        <Button
+            android:id="@+id/btn_p2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:text="인물2" />
 
         <Button
             android:id="@+id/btn_v1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:visibility="gone"
             android:text="타워1" />
         <Button
             android:id="@+id/btn_v2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:visibility="gone"
             android:text="타워2" />
 
         <Button
             android:id="@+id/btn_t1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:visibility="gone"
             android:text="도로"/>
         <Button
             android:id="@+id/btn_t2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:visibility="gone"
             android:text="도로2"/>
 
     </LinearLayout>
