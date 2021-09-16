@@ -31,10 +31,16 @@
         android:layout_marginTop="50dp"
         android:gravity="center|top">
         <Button
+            android:id="@+id/btn_grid"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:text="#" />
+        <Button
             android:id="@+id/btn_category"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:text="인식" />
+
 <!--        <Button-->
 <!--            android:id="@+id/btn_p1"-->
 <!--            android:layout_width="wrap_content"-->
@@ -47,8 +53,6 @@
 <!--            android:layout_height="wrap_content"-->
 <!--            android:visibility="gone"-->
 <!--            android:text="인물2" />-->
-
-
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -76,17 +80,48 @@
             android:visibility="gone"
             android:text="바다" />
         <Button
+            android:id="@+id/btn_f1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:text="음식1" />
+        <Button
+            android:id="@+id/btn_f2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:text="음식2" />
+        <Button
             android:id="@+id/btn_p1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:visibility="gone"
-            android:text="인물1" />
+            android:text="전신1" />
         <Button
             android:id="@+id/btn_p2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:visibility="gone"
-            android:text="인물2" />
+            android:text="전신2" />
+<!--        <Button-->
+<!--            android:id="@+id/btn_p3"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:visibility="gone"-->
+<!--            android:text="상반신" />-->
+<!--        <Button-->
+<!--            android:id="@+id/btn_food1"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:visibility="gone"-->
+<!--            android:text="음식1" />-->
+<!--        <Button-->
+<!--            android:id="@+id/btn_food2"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:visibility="gone"-->
+<!--            android:text="음식2" />-->
+
 
         <Button
             android:id="@+id/btn_v1"

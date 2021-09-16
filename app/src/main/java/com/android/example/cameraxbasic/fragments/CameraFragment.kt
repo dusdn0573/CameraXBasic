@@ -448,6 +448,14 @@ class CameraFragment : Fragment() {
                 setGalleryThumbnail(Uri.fromFile(it))
             }
         }
+        //격자
+        controls.findViewById<Button>(R.id.btn_grid).setOnClickListener{
+            grid.visibility=if (grid.visibility==View.INVISIBLE){
+                View.VISIBLE
+            }else{
+                View.INVISIBLE
+            }
+        }
         //카테고리
         controls.findViewById<Button>(R.id.btn_category).setOnClickListener{
             btn_t1.visibility=View.GONE
@@ -572,6 +580,34 @@ class CameraFragment : Fragment() {
             gudo_p1.visibility=View.INVISIBLE
 
         }
+//        //사람구도(상반신)
+//        controls.findViewById<Button>(R.id.btn_p3).setOnClickListener{
+//            person2.visibility=if (person2.visibility==View.INVISIBLE){
+//                View.VISIBLE
+//            }else{
+//                View.INVISIBLE
+//            }
+//            person2.visibility=View.INVISIBLE
+//
+//        }
+//        //음식1
+//        controls.findViewById<Button>(R.id.btn_food1).setOnClickListener{
+//            food1.visibility=if (food1.visibility==View.INVISIBLE){
+//                View.VISIBLE
+//            }else{
+//                View.INVISIBLE
+//            }
+//            food2.visibility=View.INVISIBLE
+//        }
+//        //음식2
+//        controls.findViewById<Button>(R.id.btn_food2).setOnClickListener{
+//            food2.visibility=if (food1.visibility==View.INVISIBLE){
+//                View.VISIBLE
+//            }else{
+//                View.INVISIBLE
+//            }
+//            food1.visibility=View.INVISIBLE
+//        }
         //촬영장소인식 버튼을 눌렀을 때
         controls.findViewById<Button>(R.id.btn_c).setOnClickListener {
             btn_t1.visibility=View.GONE
