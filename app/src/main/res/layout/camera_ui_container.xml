@@ -23,37 +23,49 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- Camera control and gallery buttons -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="50dp"
+        android:gravity="left|top">
+        <Button
+            android:id="@+id/btn_grid"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:text="#" />
 
+
+
+        <!--        <Button-->
+        <!--            android:id="@+id/btn_p1"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:visibility="gone"-->
+        <!--            android:text="인물1" />-->
+        <!--        <Button-->
+        <!--            android:id="@+id/btn_p2"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:visibility="gone"-->
+        <!--            android:text="인물2" />-->
+    </LinearLayout>
+
+    <!-- Camera control and gallery buttons -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="50dp"
         android:gravity="center|top">
-        <Button
-            android:id="@+id/btn_grid"
-            android:layout_width="30dp"
-            android:layout_height="wrap_content"
-            android:text="#" />
+
         <Button
             android:id="@+id/btn_category"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:text="인식" />
 
-<!--        <Button-->
-<!--            android:id="@+id/btn_p1"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:visibility="gone"-->
-<!--            android:text="인물1" />-->
-<!--        <Button-->
-<!--            android:id="@+id/btn_p2"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:visibility="gone"-->
-<!--            android:text="인물2" />-->
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
