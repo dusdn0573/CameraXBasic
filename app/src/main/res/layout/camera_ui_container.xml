@@ -80,18 +80,6 @@
             android:visibility="gone"
             android:text="바다" />
         <Button
-            android:id="@+id/btn_f1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="gone"
-            android:text="음식1" />
-        <Button
-            android:id="@+id/btn_f2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="gone"
-            android:text="음식2" />
-        <Button
             android:id="@+id/btn_p1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -103,24 +91,24 @@
             android:layout_height="wrap_content"
             android:visibility="gone"
             android:text="전신2" />
-<!--        <Button-->
-<!--            android:id="@+id/btn_p3"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:visibility="gone"-->
-<!--            android:text="상반신" />-->
-<!--        <Button-->
-<!--            android:id="@+id/btn_food1"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:visibility="gone"-->
-<!--            android:text="음식1" />-->
-<!--        <Button-->
-<!--            android:id="@+id/btn_food2"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:visibility="gone"-->
-<!--            android:text="음식2" />-->
+        <Button
+            android:id="@+id/btn_p3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:text="상반신" />
+        <Button
+            android:id="@+id/btn_food1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:text="음식1" />
+        <Button
+            android:id="@+id/btn_food2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:text="음식2" />
 
 
         <Button
