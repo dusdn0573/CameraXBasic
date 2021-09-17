@@ -28,12 +28,25 @@
         android:layout_height="match_parent"
         android:layout_marginTop="50dp"
         android:gravity="left|top">
-        <Button
+<!--        <Button-->
+<!--            android:id="@+id/btn_grid"-->
+<!--            android:layout_width="50dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginLeft="40dp"-->
+<!--            android:text="#" />-->
+
+        <ImageButton
             android:id="@+id/btn_grid"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="40dp"
-            android:text="#" />
+            android:layout_width="62dp"
+            android:layout_height="@dimen/round_button_medium"
+            android:layout_marginLeft="25dp"
+            android:layout_marginBottom="@dimen/shutter_button_margin"
+            android:background="@drawable/icon_grid"
+            android:contentDescription="@string/capture_button_alt"
+            android:scaleType="fitCenter"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
 
 
 
@@ -63,8 +76,37 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:text="인식" />
-
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="25dp"
+        android:gravity="right|top">
+
+<!--        <Button-->
+<!--            android:id="@+id/btn_person"-->
+<!--            android:layout_width="100dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:visibility="invisible"-->
+<!--            android:text="인물" />-->
+
+        <ImageButton
+            android:id="@+id/camera_switch_button"
+            android:layout_width="@dimen/round_button_medium"
+            android:layout_height="@dimen/round_button_medium"
+            android:layout_marginBottom="@dimen/margin_xlarge"
+            android:layout_marginStart="@dimen/margin_small"
+            android:padding="@dimen/spacing_small"
+            android:scaleType="fitCenter"
+            android:background="@android:color/transparent"
+            app:srcCompat="@drawable/icon_switch"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:contentDescription="@string/switch_camera_button_alt" />
+    </LinearLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -78,6 +120,9 @@
             android:layout_height="wrap_content"
             android:text="촬영 장소 인식" />
     </LinearLayout>
+
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -96,13 +141,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:visibility="gone"
-            android:text="전신1" />
-        <Button
-            android:id="@+id/btn_p2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="gone"
-            android:text="전신2" />
+            android:text="전신" />
+<!--        <Button-->
+<!--            android:id="@+id/btn_p2"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:visibility="gone"-->
+<!--            android:text="전신2" />-->
         <Button
             android:id="@+id/btn_p3"
             android:layout_width="wrap_content"
@@ -152,19 +197,19 @@
     </LinearLayout>
 
 
-    <ImageButton
-        android:id="@+id/camera_switch_button"
-        android:layout_width="@dimen/round_button_medium"
-        android:layout_height="@dimen/round_button_medium"
-        android:layout_marginBottom="@dimen/margin_xlarge"
-        android:layout_marginStart="@dimen/margin_small"
-        android:padding="@dimen/spacing_small"
-        android:scaleType="fitCenter"
-        android:background="@android:color/transparent"
-        app:srcCompat="@drawable/ic_switch"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:contentDescription="@string/switch_camera_button_alt" />
+<!--    <ImageButton-->
+<!--        android:id="@+id/camera_switch_button"-->
+<!--        android:layout_width="@dimen/round_button_medium"-->
+<!--        android:layout_height="@dimen/round_button_medium"-->
+<!--        android:layout_marginBottom="@dimen/margin_xlarge"-->
+<!--        android:layout_marginStart="@dimen/margin_small"-->
+<!--        android:padding="@dimen/spacing_small"-->
+<!--        android:scaleType="fitCenter"-->
+<!--        android:background="@android:color/transparent"-->
+<!--        app:srcCompat="@drawable/ic_switch"-->
+<!--        app:layout_constraintLeft_toLeftOf="parent"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        android:contentDescription="@string/switch_camera_button_alt" />-->
 
     <ImageButton
         android:id="@+id/camera_capture_button"

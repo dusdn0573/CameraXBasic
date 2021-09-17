@@ -18,7 +18,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/camera_container"
-    android:background="@android:color/black"
+    android:background="@android:color/white"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <RelativeLayout
@@ -59,13 +59,13 @@
         <ImageView
             android:id="@+id/food1"
             android:layout_width="match_parent"
-            android:layout_height="400dp"
+            android:layout_height="410dp"
             android:src="@drawable/food1"
             android:visibility="invisible" />
         <ImageView
             android:id="@+id/food2"
             android:layout_width="match_parent"
-            android:layout_height="400dp"
+            android:layout_height="410dp"
             android:src="@drawable/food2"
             android:visibility="invisible" />
 
@@ -77,15 +77,15 @@
             android:visibility="invisible" />
         <ImageView
             android:id="@+id/gudo_p1"
-            android:layout_width="290dp"
-            android:layout_height="250dp"
+            android:layout_width="285dp"
+            android:layout_height="270dp"
             android:src="@drawable/person"
             android:visibility="invisible"
             android:layout_marginTop="150dp"/>
         <ImageView
             android:id="@+id/gudo_p2"
             android:layout_width="match_parent"
-            android:layout_height="250dp"
+            android:layout_height="270dp"
             android:src="@drawable/person"
             android:visibility="invisible"
             android:layout_marginTop="150dp"
