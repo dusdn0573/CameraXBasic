@@ -57,6 +57,13 @@
             android:src="@drawable/person2"
             android:visibility="invisible" />
         <ImageView
+            android:id="@+id/person3"
+            android:layout_width="match_parent"
+            android:layout_height="410dp"
+            android:src="@drawable/person3"
+            android:visibility="invisible" />
+
+        <ImageView
             android:id="@+id/food1"
             android:layout_width="match_parent"
             android:layout_height="410dp"

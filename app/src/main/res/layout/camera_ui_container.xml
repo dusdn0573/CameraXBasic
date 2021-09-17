@@ -145,6 +145,7 @@
             android:layout_height="wrap_content"
             android:visibility="gone"
             android:background="@drawable/button_shape"
+            android:layout_marginRight="20dp"
             android:text="전신" />
         <!--        <Button-->
         <!--            android:id="@+id/btn_p2"-->
@@ -165,6 +166,7 @@
             android:layout_height="wrap_content"
             android:visibility="gone"
             android:background="@drawable/button_shape"
+            android:layout_marginRight="20dp"
             android:text="음식1" />
         <Button
             android:id="@+id/btn_food2"
@@ -181,6 +183,7 @@
             android:layout_height="wrap_content"
             android:visibility="gone"
             android:background="@drawable/button_shape"
+            android:layout_marginRight="20dp"
             android:text="타워1" />
         <Button
             android:id="@+id/btn_v2"
@@ -196,6 +199,7 @@
             android:layout_height="wrap_content"
             android:visibility="gone"
             android:background="@drawable/button_shape"
+            android:layout_marginRight="20dp"
             android:text="도로"/>
         <Button
             android:id="@+id/btn_t2"
@@ -214,14 +218,21 @@
         android:layout_marginTop="100dp"
         android:gravity="center"
         android:layout_marginBottom="95dp">
+<!--        <Button-->
+<!--            android:id="@+id/btn_category"-->
+<!--            android:layout_width="100dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:background="@drawable/button_shape"-->
+<!--            android:visibility="invisible"/>-->
         <Button
             android:id="@+id/btn_category"
-            android:layout_width="100dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/button_shape"
-            android:visibility="invisible"
-            android:text="인식" />
-
+            android:background="#FFFFFF"
+            android:textSize="20sp"
+            android:textColor="#4C4C4C"
+            android:visibility="visible"
+            android:text="hello"/>
     </LinearLayout>
 
 

@@ -125,6 +125,8 @@ class CameraFragment : Fragment() {
 
     lateinit var tv : Button
     var i:Int=0
+    var half_i:Int=0
+
     var person_i:Int=0
 
 
@@ -482,6 +484,7 @@ class CameraFragment : Fragment() {
             gudo_p1.visibility=View.INVISIBLE
             gudo_p2.visibility=View.INVISIBLE
             person2.visibility=View.INVISIBLE
+            person3.visibility=View.INVISIBLE
             gudo_t1.visibility=View.INVISIBLE
             gudo_t2.visibility=View.INVISIBLE
             gudo_t3.visibility=View.INVISIBLE
@@ -596,6 +599,8 @@ class CameraFragment : Fragment() {
                 }
                 gudo_p2.visibility=View.INVISIBLE
                 person2.visibility=View.INVISIBLE
+                person3.visibility=View.INVISIBLE
+
 
             }
             else if(i%2==1){
@@ -606,6 +611,8 @@ class CameraFragment : Fragment() {
                 }
                 gudo_p1.visibility=View.INVISIBLE
                 person2.visibility=View.INVISIBLE
+                person3.visibility=View.INVISIBLE
+
             }
 //            gudo_p1.visibility=if (gudo_p1.visibility==View.INVISIBLE){
 //                View.VISIBLE
@@ -628,14 +635,30 @@ class CameraFragment : Fragment() {
 //        }
         //사람구도(상반신)
         controls.findViewById<Button>(R.id.btn_p3).setOnClickListener{
-            person2.visibility=if (person2.visibility==View.INVISIBLE){
-                View.VISIBLE
-            }else{
-                View.INVISIBLE
-            }
-            gudo_p1.visibility=View.INVISIBLE
-            gudo_p2.visibility=View.INVISIBLE
 
+            half_i+=1
+            if(half_i%2==0)
+            {
+                person2.visibility=if (person2.visibility==View.INVISIBLE){
+                    View.VISIBLE
+                }else{
+                    View.INVISIBLE
+                }
+                gudo_p1.visibility=View.INVISIBLE
+                gudo_p2.visibility=View.INVISIBLE
+                person3.visibility=View.INVISIBLE
+
+            }
+            else if(half_i%2==1){
+                person3.visibility=if (person3.visibility==View.INVISIBLE){
+                    View.VISIBLE
+                }else{
+                    View.INVISIBLE
+                }
+                gudo_p1.visibility=View.INVISIBLE
+                gudo_p2.visibility=View.INVISIBLE
+                person2.visibility=View.INVISIBLE
+            }
 
         }
 //        //btn_person
