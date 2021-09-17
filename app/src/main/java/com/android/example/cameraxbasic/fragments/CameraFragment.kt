@@ -38,6 +38,7 @@ import android.webkit.MimeTypeMap
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.camera.core.*
 import androidx.camera.core.AspectRatio.RATIO_4_3
@@ -123,6 +124,10 @@ class CameraFragment : Fragment() {
     var resultBody:String?=null
 
     lateinit var tv : Button
+    var i:Int=0
+    var half_i:Int=0
+
+    var person_i:Int=0
 
 
     /** Blocking camera operations are performed using this executor
@@ -212,7 +217,7 @@ class CameraFragment : Fragment() {
             // 글라이드(Glide)를 사용하여 섬네일을 원형 버튼에 로드
             Glide.with(thumbnail)
                     .load(uri)
-                    .apply(RequestOptions.circleCropTransform())
+                    .apply(RequestOptions.centerCropTransform())
                     .into(thumbnail)
         }
     }
@@ -448,15 +453,29 @@ class CameraFragment : Fragment() {
                 setGalleryThumbnail(Uri.fromFile(it))
             }
         }
+        //격자
+        controls.findViewById<ImageButton>(R.id.btn_grid).setOnClickListener{
+            grid.visibility=if (grid.visibility==View.INVISIBLE){
+                View.VISIBLE
+            }else{
+                View.INVISIBLE
+            }
+        }
         //카테고리
         controls.findViewById<Button>(R.id.btn_category).setOnClickListener{
+
             btn_t1.visibility=View.GONE
             btn_t2.visibility=View.GONE
             btn_h.visibility=View.GONE
             btn_v1.visibility=View.GONE
             btn_v2.visibility=View.GONE
             btn_p1.visibility=View.GONE
-            btn_p2.visibility=View.GONE
+//            btn_p2.visibility=View.GONE
+            btn_p3.visibility=View.GONE
+            btn_food1.visibility=View.GONE
+            btn_food2.visibility=View.GONE
+//            btn_person.visibility=View.INVISIBLE
+
 
             gudo_h.visibility=View.INVISIBLE
             gudo_v.visibility=View.INVISIBLE
@@ -464,31 +483,44 @@ class CameraFragment : Fragment() {
             gudo_v2.visibility=View.INVISIBLE
             gudo_p1.visibility=View.INVISIBLE
             gudo_p2.visibility=View.INVISIBLE
+            person2.visibility=View.INVISIBLE
+            person3.visibility=View.INVISIBLE
             gudo_t1.visibility=View.INVISIBLE
             gudo_t2.visibility=View.INVISIBLE
             gudo_t3.visibility=View.INVISIBLE
             gudo_t4.visibility=View.INVISIBLE
+            food1.visibility=View.INVISIBLE
+            food2.visibility=View.INVISIBLE
 
             if(btn_category.getText().toString().equals("beach")){
                 Log.d(TAG,"이것은 beach")
                 btn_h.visibility=View.VISIBLE
+//                btn_person.visibility=View.VISIBLE
             }
             else if(btn_category.getText().toString().equals("building")){
                 Log.d(TAG,"이것은 building")
                 btn_v1.visibility=View.VISIBLE
                 btn_v2.visibility=View.VISIBLE
-
             }
             else if(btn_category.getText().toString().equals("person")){
                 Log.d(TAG,"이것은 person")
                 btn_p1.visibility=View.VISIBLE
-                btn_p2.visibility=View.VISIBLE
+//                btn_p2.visibility=View.VISIBLE
+                btn_p3.visibility=View.VISIBLE
             }
             else if(btn_category.getText().toString().equals("road")){
                 Log.d(TAG,"이것은 road")
                 btn_t1.visibility=View.VISIBLE
                 btn_t2.visibility=View.VISIBLE
+
             }
+            else if(btn_category.getText().toString().equals("food")){
+                Log.d(TAG,"이것은 food")
+                btn_food1.visibility=View.VISIBLE
+                btn_food2.visibility=View.VISIBLE
+//                btn_person.visibility=View.INVISIBLE
+            }
+
 
 
 //            gudo_h.visibility=if (gudo_h.visibility==View.INVISIBLE){
@@ -506,6 +538,8 @@ class CameraFragment : Fragment() {
                 View.INVISIBLE
             }
         }
+
+
         //수직구도
         controls.findViewById<Button>(R.id.btn_v1).setOnClickListener{
             gudo_v.visibility=if (gudo_v.visibility==View.INVISIBLE){
@@ -555,33 +589,148 @@ class CameraFragment : Fragment() {
 
         //사람구도
         controls.findViewById<Button>(R.id.btn_p1).setOnClickListener{
-            gudo_p1.visibility=if (gudo_p1.visibility==View.INVISIBLE){
-                View.VISIBLE
-            }else{
-                View.INVISIBLE
+            i+=1
+            if(i%2==0)
+            {
+                gudo_p1.visibility=if (gudo_p1.visibility==View.INVISIBLE){
+                    View.VISIBLE
+                }else{
+                    View.INVISIBLE
+                }
+                gudo_p2.visibility=View.INVISIBLE
+                person2.visibility=View.INVISIBLE
+                person3.visibility=View.INVISIBLE
+
+
             }
-            gudo_p2.visibility=View.INVISIBLE
+            else if(i%2==1){
+                gudo_p2.visibility=if (gudo_p2.visibility==View.INVISIBLE){
+                    View.VISIBLE
+                }else{
+                    View.INVISIBLE
+                }
+                gudo_p1.visibility=View.INVISIBLE
+                person2.visibility=View.INVISIBLE
+                person3.visibility=View.INVISIBLE
+
+            }
+//            gudo_p1.visibility=if (gudo_p1.visibility==View.INVISIBLE){
+//                View.VISIBLE
+//            }else{
+//                View.INVISIBLE
+//            }
+//            gudo_p2.visibility=View.INVISIBLE
+//            person2.visibility=View.INVISIBLE
         }
-        //사람구도
-        controls.findViewById<Button>(R.id.btn_p2).setOnClickListener{
-            gudo_p2.visibility=if (gudo_p2.visibility==View.INVISIBLE){
-                View.VISIBLE
-            }else{
-                View.INVISIBLE
+//        //사람구도
+//        controls.findViewById<Button>(R.id.btn_p2).setOnClickListener{
+//            gudo_p2.visibility=if (gudo_p2.visibility==View.INVISIBLE){
+//                View.VISIBLE
+//            }else{
+//                View.INVISIBLE
+//            }
+//            gudo_p1.visibility=View.INVISIBLE
+//            person2.visibility=View.INVISIBLE
+//
+//        }
+        //사람구도(상반신)
+        controls.findViewById<Button>(R.id.btn_p3).setOnClickListener{
+
+            half_i+=1
+            if(half_i%2==0)
+            {
+                person2.visibility=if (person2.visibility==View.INVISIBLE){
+                    View.VISIBLE
+                }else{
+                    View.INVISIBLE
+                }
+                gudo_p1.visibility=View.INVISIBLE
+                gudo_p2.visibility=View.INVISIBLE
+                person3.visibility=View.INVISIBLE
+
             }
-            gudo_p1.visibility=View.INVISIBLE
+            else if(half_i%2==1){
+                person3.visibility=if (person3.visibility==View.INVISIBLE){
+                    View.VISIBLE
+                }else{
+                    View.INVISIBLE
+                }
+                gudo_p1.visibility=View.INVISIBLE
+                gudo_p2.visibility=View.INVISIBLE
+                person2.visibility=View.INVISIBLE
+            }
 
         }
+//        //btn_person
+//        controls.findViewById<Button>(R.id.btn_person).setOnClickListener{
+//            person_i+=1
+//            if(person_i%4==0)
+//            {
+//                gudo_p1.visibility=if (gudo_p1.visibility==View.INVISIBLE){
+//                    View.VISIBLE
+//                }else{
+//                    View.INVISIBLE
+//                }
+//                gudo_p2.visibility=View.INVISIBLE
+//                person2.visibility=View.INVISIBLE
+//
+//            }
+//            else if(person_i%4==1){
+//                gudo_p2.visibility=if (gudo_p2.visibility==View.INVISIBLE){
+//                    View.VISIBLE
+//                }else{
+//                    View.INVISIBLE
+//                }
+//                gudo_p1.visibility=View.INVISIBLE
+//                person2.visibility=View.INVISIBLE
+//            }
+//            else if(person_i%4==2){
+//                person2.visibility=if (person2.visibility==View.INVISIBLE){
+//                    View.VISIBLE
+//                }else{
+//                    View.INVISIBLE
+//                }
+//                gudo_p1.visibility=View.INVISIBLE
+//                gudo_p2.visibility=View.INVISIBLE
+//            }
+//            else if(person_i%4==3){
+//                gudo_p1.visibility=View.INVISIBLE
+//                gudo_p2.visibility=View.INVISIBLE
+//                person2.visibility=View.INVISIBLE
+//            }
+//        }
+        //음식1
+        controls.findViewById<Button>(R.id.btn_food1).setOnClickListener{
+            food1.visibility=if (food1.visibility==View.INVISIBLE){
+                View.VISIBLE
+            }else{
+                View.INVISIBLE
+            }
+            food2.visibility=View.INVISIBLE
+        }
+        //음식2
+        controls.findViewById<Button>(R.id.btn_food2).setOnClickListener{
+            food2.visibility=if (food2.visibility==View.INVISIBLE){
+                View.VISIBLE
+            }else{
+                View.INVISIBLE
+            }
+            food1.visibility=View.INVISIBLE
+        }
         //촬영장소인식 버튼을 눌렀을 때
-        controls.findViewById<Button>(R.id.btn_c).setOnClickListener {
+        controls.findViewById<ImageButton>(R.id.btn_c).setOnClickListener {
+            btn_category.visibility=View.VISIBLE
+
             btn_t1.visibility=View.GONE
             btn_t2.visibility=View.GONE
             btn_h.visibility=View.GONE
             btn_v1.visibility=View.GONE
             btn_v2.visibility=View.GONE
             btn_p1.visibility=View.GONE
-            btn_p2.visibility=View.GONE
-
+//            btn_p2.visibility=View.GONE
+            btn_p3.visibility=View.GONE
+            btn_food1.visibility=View.GONE
+            btn_food2.visibility=View.GONE
 
             gudo_h.visibility=View.INVISIBLE
             gudo_v.visibility=View.INVISIBLE
@@ -589,10 +738,13 @@ class CameraFragment : Fragment() {
             gudo_v2.visibility=View.INVISIBLE
             gudo_p1.visibility=View.INVISIBLE
             gudo_p2.visibility=View.INVISIBLE
+            person2.visibility=View.INVISIBLE
             gudo_t1.visibility=View.INVISIBLE
             gudo_t2.visibility=View.INVISIBLE
             gudo_t3.visibility=View.INVISIBLE
             gudo_t4.visibility=View.INVISIBLE
+            food1.visibility=View.INVISIBLE
+            food2.visibility=View.INVISIBLE
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 val baos = ByteArrayOutputStream()
