@@ -461,6 +461,7 @@ class CameraFragment : Fragment() {
         }
         //카테고리
         controls.findViewById<Button>(R.id.btn_category).setOnClickListener{
+
             btn_t1.visibility=View.GONE
             btn_t2.visibility=View.GONE
             btn_h.visibility=View.GONE
@@ -695,6 +696,8 @@ class CameraFragment : Fragment() {
         }
         //촬영장소인식 버튼을 눌렀을 때
         controls.findViewById<ImageButton>(R.id.btn_c).setOnClickListener {
+            btn_category.visibility=View.VISIBLE
+
             btn_t1.visibility=View.GONE
             btn_t2.visibility=View.GONE
             btn_h.visibility=View.GONE

@@ -64,19 +64,7 @@
         <!--            android:text="인물2" />-->
     </LinearLayout>
 
-    <!-- Camera control and gallery buttons -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="50dp"
-        android:gravity="center|top">
 
-        <Button
-            android:id="@+id/btn_category"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:text="인식" />
-    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -136,49 +124,54 @@
 <!--    </LinearLayout>-->
 
 
-
+    <!-- Camera control and gallery buttons -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/camera_capture_button"
-        android:layout_marginTop="100dp"
-        android:gravity="center"
-        android:layout_marginBottom="60dp">
+        android:layout_height="match_parent"
+        android:layout_marginTop="50dp"
+        android:gravity="center|bottom"
+        android:layout_marginBottom="165dp">
+
         <Button
             android:id="@+id/btn_h"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:visibility="gone"
+            android:background="@drawable/button_shape"
             android:text="바다" />
         <Button
             android:id="@+id/btn_p1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:visibility="gone"
+            android:background="@drawable/button_shape"
             android:text="전신" />
-<!--        <Button-->
-<!--            android:id="@+id/btn_p2"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:visibility="gone"-->
-<!--            android:text="전신2" />-->
+        <!--        <Button-->
+        <!--            android:id="@+id/btn_p2"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:visibility="gone"-->
+        <!--            android:text="전신2" />-->
         <Button
             android:id="@+id/btn_p3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:visibility="gone"
+            android:background="@drawable/button_shape"
             android:text="상반신" />
         <Button
             android:id="@+id/btn_food1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:visibility="gone"
+            android:background="@drawable/button_shape"
             android:text="음식1" />
         <Button
             android:id="@+id/btn_food2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:visibility="gone"
+            android:background="@drawable/button_shape"
             android:text="음식2" />
 
 
@@ -187,12 +180,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:visibility="gone"
+            android:background="@drawable/button_shape"
             android:text="타워1" />
         <Button
             android:id="@+id/btn_v2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:visibility="gone"
+            android:background="@drawable/button_shape"
             android:text="타워2" />
 
         <Button
@@ -200,13 +195,32 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:visibility="gone"
+            android:background="@drawable/button_shape"
             android:text="도로"/>
         <Button
             android:id="@+id/btn_t2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:visibility="gone"
+            android:background="@drawable/button_shape"
             android:text="도로2"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/camera_capture_button"
+        android:layout_marginTop="100dp"
+        android:gravity="center"
+        android:layout_marginBottom="95dp">
+        <Button
+            android:id="@+id/btn_category"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_shape"
+            android:visibility="invisible"
+            android:text="인식" />
 
     </LinearLayout>
 
