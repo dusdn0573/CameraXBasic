@@ -215,7 +215,7 @@ class CameraFragment : Fragment() {
             // 글라이드(Glide)를 사용하여 섬네일을 원형 버튼에 로드
             Glide.with(thumbnail)
                     .load(uri)
-                    .apply(RequestOptions.circleCropTransform())
+                    .apply(RequestOptions.centerCropTransform())
                     .into(thumbnail)
         }
     }
@@ -694,7 +694,7 @@ class CameraFragment : Fragment() {
             food1.visibility=View.INVISIBLE
         }
         //촬영장소인식 버튼을 눌렀을 때
-        controls.findViewById<Button>(R.id.btn_c).setOnClickListener {
+        controls.findViewById<ImageButton>(R.id.btn_c).setOnClickListener {
             btn_t1.visibility=View.GONE
             btn_t2.visibility=View.GONE
             btn_h.visibility=View.GONE
